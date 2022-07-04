@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UA</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        background-color: #f5f5f7;
+        padding: 32px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .item {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+
+      .item:last-of-type {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bowser/2.11.0/bundled.min.js"
+      integrity="sha512-hsF/cpBvi/vjCP4Ps/MrPUFk6l4BqcGbzVUhqjJdX2SmAri1Oj8FBUGCvBiKHYd6gg3vLsV16CtIRNOvK5X4lQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      (() => {
+        const insert = (s) => {
+          const d = document.createElement('div');
+          d.className = 'item';
+          d.innerText = s;
+          document.body.append(d);
+        };
+
+        const ua = window.navigator.userAgent;
+
+        insert(ua);
+
+        const _bowser = bowser.getParser(ua).parsedResult;
+
+        Object.keys(_bowser).forEach((i) => {
+          Object.keys(_bowser[i]).forEach((j) => {
+            insert(`${i} ${j}: ${_bowser[i][j]}`);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
