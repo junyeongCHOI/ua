@@ -41,26 +41,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <script>
-      (() => {
-        const insert = (s) => {
-          const d = document.createElement('div');
-          d.className = 'item';
-          d.innerText = s;
-          document.body.append(d);
-        };
-
-        const ua = window.navigator.userAgent;
-
-        insert(ua);
-
-        const _bowser = bowser.getParser(ua).parsedResult;
-
-        Object.keys(_bowser).forEach((i) => {
-          Object.keys(_bowser[i]).forEach((j) => {
-            insert(`${i} ${j}: ${_bowser[i][j]}`);
-          });
-        });
-      })();
+      (()=>{const e=e=>{const t=document.createElement("div");t.className="item",t.innerText=e,document.body.append(t)},t=window.navigator.userAgent;e(t);const n=bowser.getParser(t).parsedResult;Object.keys(n).forEach(t=>{Object.keys(n[t]).forEach(o=>{e(`${t} ${o}: ${n[t][o]}`)})})})()
     </script>
   </body>
 </html>
